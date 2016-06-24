@@ -7,9 +7,13 @@ class Node:
         self.back_node = None
         self.left_node = None
         self.right_node = None
+        self.binary_value = None
         
-    def update_node_value(self, node_value):
-        self.node_value = node_value;
+    def set_binary_node_value(self, binary_value):
+        self.binary_value = binary_value;
+        
+    def get_binary_node_value(self):
+        return self.binary_value
         
     def get_node_value(self):
         return self.node_value
