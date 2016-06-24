@@ -14,6 +14,9 @@ class Node:
     def get_node_value(self):
         return self.node_value
     
+    def get_node_representation(self):
+        return self.node_representation
+    
     def set_back_node(self, back_node):
         self.back_node = back_node
         
