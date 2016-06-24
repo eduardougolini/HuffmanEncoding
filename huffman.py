@@ -8,16 +8,39 @@ def get_encoded_data(to_comprime_text, tree_nodes):
     
     for char in to_comprime_text:
         actual_node = tree_nodes[char]
-        
+                
         while "True":
             if actual_node.get_binary_node_value() == None:
                 break
                 
-            binary_sequence = str(actual_node.get_binary_node_value()) + binary_sequence
+            binary_sequence += str(actual_node.get_binary_node_value())
             
             actual_node = actual_node.get_back_node()
             
     return binary_sequence
+
+def get_decoded_data(binary_sequence, tree_nodes):
+    root_node = None
+    decoded_string = ""
+    
+    for node in tree_nodes:
+        if tree_nodes[node].get_binary_node_value() == None:
+            root_node = tree_nodes[node]
+        
+    actual_node = root_node
+        
+    for bit in binary_sequence:
+        bit = int(bit)
+        
+        if (binary_sequence[bit] == 1 and actual_node.get_right_node() != None):
+            actual_node = actual_node.get_right_node()
+        elif (binary_sequence[bit] == 0 and actual_node.get_left_node() != None):
+            actual_node = actual_node.get_left_node()
+        else:
+            decoded_string += actual_node.get_node_representation()
+            actual_node = root_node
+            
+    return decoded_string
     
 
 def create_tree(to_comprime_text):
@@ -63,3 +86,7 @@ if __name__ == "__main__":
     compressed_string = get_encoded_data(to_comprime_text, tree_nodes)
     
     print(compressed_string)
+    
+    uncompressed_string = get_decoded_data(compressed_string, tree_nodes)
+    
+    print(uncompressed_string)
