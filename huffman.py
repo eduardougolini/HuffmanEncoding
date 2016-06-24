@@ -28,13 +28,12 @@ def get_decoded_data(binary_sequence, tree_nodes):
             root_node = tree_nodes[node]
         
     actual_node = root_node
-        
     for bit in binary_sequence:
         bit = int(bit)
         
-        if (binary_sequence[bit] == 1 and actual_node.get_right_node() != None):
+        if (binary_sequence[bit] == "1" and actual_node.get_right_node() != None):
             actual_node = actual_node.get_right_node()
-        elif (binary_sequence[bit] == 0 and actual_node.get_left_node() != None):
+        elif (binary_sequence[bit] == "0" and actual_node.get_left_node() != None):
             actual_node = actual_node.get_left_node()
         else:
             decoded_string += actual_node.get_node_representation()
