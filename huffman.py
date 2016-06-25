@@ -1,3 +1,4 @@
+from time import sleep
 from Objects.Node import Node
 from collections import Counter
 from queue import PriorityQueue
@@ -72,3 +73,4 @@ if __name__ == "__main__":
         compressed_char = get_encoded_data(char, tree_nodes)
         print("Letra " + char + " comprimida: " + compressed_char)
     
+    sleep(10)
