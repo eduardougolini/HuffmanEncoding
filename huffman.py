@@ -8,12 +8,14 @@ def get_encoded_data(to_comprime_text, tree_nodes):
     
     for char in to_comprime_text:
         actual_node = tree_nodes[char]
-                
+        
+        binary_letter = ""
         while "True":
-            if actual_node.get_binary_node_value() == None:
+            if actual_node.get_back_node() == None:
+                binary_sequence += " " + binary_letter
                 break
                 
-            binary_sequence += str(actual_node.get_binary_node_value())
+            binary_letter = str(actual_node.get_binary_node_value()) + binary_letter
             
             actual_node = actual_node.get_back_node()
             
@@ -78,7 +80,7 @@ def create_tree(to_comprime_text):
 
 if __name__ == "__main__":
     
-    to_comprime_text = "AAAAAABBBBBCCCCDDDEEF"
+    to_comprime_text = "compressed"
     
     tree_nodes = create_tree(to_comprime_text)
     
